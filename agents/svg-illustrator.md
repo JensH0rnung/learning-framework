@@ -23,16 +23,18 @@ You are not teaching. You are making a picture that carries information a senten
 
 1. **Write the SVG** to the given path.
 2. **Look at it.** Rasterise and `Read` the PNG so you see the rendered result instead of
-   trusting your markup. Both of these are verified present on this machine:
+   trusting your markup. Probe for a rasteriser rather than assuming one — neither is
+   guaranteed to be installed:
    ```bash
-   # preferred — exact dimensions, quiet, no padding
+   # preferred — exact dimensions, quiet, no padding (librsvg; brew install librsvg)
    rsvg-convert -w 1200 "<path>" -o /tmp/preview.png
-   # fallback — always available on macOS; pads to a square and exits 1 even on success,
+   # fallback on macOS — pads to a square and exits 1 even on success,
    # so check for the output file rather than the exit code
    qlmanage -t -s 1200 -o /tmp "<path>" >/dev/null 2>&1
+   # other options if present: inkscape, magick/convert, chromium --headless --screenshot
    ```
-   Then `Read` the PNG. If neither produces a file, say so in your return value rather than
-   claiming you verified it.
+   Then `Read` the PNG. If no rasteriser is available, or none produces a file, return
+   `verified: no` and name the reason — never claim you verified a diagram you did not see.
 3. **Critique what you actually see**, not what you intended: overlapping text, labels off
    canvas, arrowheads pointing wrong, unreadable sizes, geometry that contradicts the concept.
 4. **Fix and re-view.** Up to three iterations. Then stop and return the best version, naming

@@ -1,6 +1,7 @@
 # `/understand` — Design
 
-Status: approved 2026-08-18. Implementation plan not yet written.
+The rationale behind the skill: why each mechanism exists and which doctrine rule it serves.
+Read this to modify the skill; read [DOCTRINE.md](./DOCTRINE.md) to understand what it is for.
 
 A personalized teaching system for Claude Code: **Probe → Plan → Teach**, driven by an
 explicit learning doctrine, with a persistent per-domain model of what the learner
