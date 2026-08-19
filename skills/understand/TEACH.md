@@ -5,9 +5,11 @@ rushing is more important than any individual explanation.
 
 ## The step contract
 
-Every node, in this order:
+Every node, in this order. Each part has a fixed callout in the log — the table in
+[FORMATS.md](./FORMATS.md#callout-vocabulary) is authoritative; the reminders below repeat it
+inline so the mapping is never guessed.
 
-### 1. Tension
+### 1. Tension — `> [!failure] Tension`
 
 Name what the current frontier **cannot do**. This is what makes the next object necessary
 rather than arbitrary (doctrine rule 2).
@@ -18,7 +20,7 @@ rather than arbitrary (doctrine rule 2).
 No tension, no step. If you cannot state one, the node is misplaced in the DAG — say so and
 fix the plan rather than teaching an unmotivated object.
 
-### 2. Motivated move
+### 2. Motivated move — prose, **not** boxed
 
 Why would anyone try *this particular* thing? Make the move look like the obvious thing to
 reach for, not a rabbit produced from a hat.
@@ -27,7 +29,10 @@ reach for, not a rabbit produced from a hat.
 > each. That is forced — anything less is not an extension, anything more is a new idea we
 > have not earned yet.
 
-### 3. The object
+This part stays unboxed in the log. It is the argument, and it must read as continuous
+reasoning rather than another labelled box.
+
+### 3. The object — `> [!abstract] Definition`
 
 State it as a **real definition** — something that determines the object. Never a list of
 properties dressed up as a definition (doctrine rule 1). If the honest form is "the unique
@@ -35,7 +40,7 @@ thing satisfying X", say that.
 
 Notation gets introduced here, explicitly flagged as notation.
 
-### 4. Anchor
+### 4. Anchor — `> [!important] Anchor`
 
 One line, safe to accept at face value, universal in form where possible. This is what the
 user will still hold in a month.
@@ -45,7 +50,7 @@ user will still hold in a month.
 
 Exactly one anchor per node. Two anchors means two nodes.
 
-### 5. Reframe
+### 5. Reframe — `> [!note] Reframe`
 
 If this node recasts something they already hold, **say so explicitly**:
 
@@ -56,7 +61,7 @@ If this node recasts something they already hold, **say so explicitly**:
 Reframes are the cheapest learning available — existing structure relabelled, not new
 structure built. Never let one pass silently.
 
-### 6. Visual
+### 6. Visual — `![[…]]`, or `> [!warning] visual pending`
 
 When the content is genuinely **geometric** — something with shape, orientation, direction,
 area, or a picture that carries information a sentence cannot — spawn the `svg-illustrator`
@@ -73,7 +78,7 @@ subagent.
 Do not illustrate the non-geometric. A diagram of an abstract definition is decoration and
 costs attention.
 
-### 7. Quiz gate
+### 7. Quiz gate — `> [!question] Quiz`, then `> [!success]` / `> [!failure]`
 
 **Free-text only. Never `AskUserQuestion` in this phase.** Ask one or two open questions in
 chat, on **this step only**, and let the user answer in their own words.
@@ -103,9 +108,67 @@ available in the session.
 - **"I don't know"** → treat as wrong, but say the step was under-taught, not that they
   failed.
 
+Log the grade in a `> [!success] Quiz — correct` or `> [!failure] Quiz — missed` callout
+carrying the user's answer *and* the reasoning verdict. The verdict is the part worth
+rereading; the answer alone says nothing.
+
 Never advance past an unverified step. This is the gate that makes the whole system
 trustworthy — it is very easy to feel that something was understood when it was not,
 especially when learning with an AI.
+
+## How a rung reads
+
+A rung that is correct but unreadable teaches nothing. Two failure modes have been observed
+in real use, both of them defects in the step, not in the learner:
+
+**Fließtext.** The rung arrives as one continuous block of prose. The learner cannot see
+where the tension ends and the definition begins, so they read it as narration and nothing
+seats. Budgets, per rung:
+
+| Part | Budget |
+|---|---|
+| Tension | 2 sentences |
+| Motivated move | ~60 words, 4 short sentences |
+| Definition | 1 sentence |
+| Anchor | 1 line |
+| Reframe | 2 sentences |
+| Whole rung, before the quiz | ~150 words |
+
+**These are diagnostics, not gags.** Over budget does not mean *write less* — it means the
+rung is carrying two reasoning steps, so **split the node**. Cutting a motivated derivation
+down to fit a word count drops the motivation, which trades a doctrine rule 2 violation for a
+style win. That is the wrong trade, and it is the exact failure this skill exists to prevent.
+
+So when a rung runs long, in order: split it into two nodes; or move a part into its callout
+where the structure carries the length; or, if it genuinely is one indivisible step that needs
+the words, **exceed the budget and say why in the log**. Never compress the reason away.
+
+No paragraph longer than four lines, in chat or in the log. If a paragraph outgrows that, it
+is doing two jobs — split it, or move half of it into its callout.
+
+**Jargon-first language.** Rule: **plain words before names.** Say what the thing does in
+everyday language, *then* attach its name.
+
+> A machine that eats a vector and hands back a single number. That is what "covector"
+> means.
+
+Never the reverse — a name introduced before its meaning forces the learner to hold an empty
+label, and an empty label is the most expensive thing they can carry (doctrine rule 1).
+
+- **One new term per rung.** Two names means two rungs.
+- **Analogy before formalism** when the field is new to this learner. The formal statement
+  still follows in the same rung; it just does not go first.
+- **Every symbol said out loud** the first time it appears: "$\partial_\mu$ — read: the rate
+  of change along direction $\mu$."
+- **Short sentences.** A sentence that needs a chain of commas to stand up should be two
+  sentences.
+- **Plain over idiomatic.** The learner may be reading in a second language; a literal phrase
+  beats a colourful one.
+- **Vocabulary check** before sending: any word that would not survive a conversation with a
+  sharp person from outside the field gets replaced, or defined in the same breath.
+
+Reread the rung before sending it. If it looks like a wall, it is one — fix it rather than
+hoping.
 
 ## Pacing rules
 
@@ -115,8 +178,10 @@ especially when learning with an AI.
 - **Never batch quizzes.** Gate each step.
 - **Answer interruptions fully, then resume the same node.** A question does not signal
   readiness to move on.
-- Write each step to the live log as it is produced — the user reads Obsidian, not the
-  terminal.
+- Write each step to the live log as it is produced, in the callouts above — the user reads
+  Obsidian, not the terminal. Cap it at ~3 callouts per rung: a note where every block is
+  boxed reads as a wall of boxes, and then the tension, the anchor and the quiz stop standing
+  out.
 
 ## Compression checkpoint
 

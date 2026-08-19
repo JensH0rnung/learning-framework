@@ -13,7 +13,7 @@ of motivated steps rooted in truths they already accept, walk it one step at a t
 harvest the compression.
 
 **Read [DOCTRINE.md](./DOCTRINE.md) now, before anything else.** Every mechanism in this
-skill exists to serve one of its six rules. When a decision is unclear, decide by doctrine.
+skill exists to serve one of its seven rules. When a decision is unclear, decide by doctrine.
 
 ## Before you start
 
@@ -39,7 +39,11 @@ These are not style preferences. Breaking any of them defeats the system.
    [PLAN.md](./PLAN.md)).
 6. **Never fail silently.** Surface every subagent failure, every contradiction, every
    unresolved strand, visibly, in both the chat and the log.
-7. **Absorb all logistics.** Planning, sourcing, verification, ordering, note-keeping,
+7. **Plain words before names, and never a wall of text.** Say what a thing does in everyday
+   language before naming it; one new term per rung; length budgets per step part (see
+   [TEACH.md](./TEACH.md)). A rung that is correct but unreadable teaches nothing — but over
+   budget means *split the node*, never *cut the motivation*.
+8. **Absorb all logistics.** Planning, sourcing, verification, ordering, note-keeping,
    visuals — yours. The user's only job is to think about the material.
 
 ## Workspace

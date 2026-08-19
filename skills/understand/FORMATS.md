@@ -82,11 +82,41 @@ graph LR
 ## `logs/YYYY-MM-DD-<topic>.md` — live session log
 
 Append-only, written **as the session happens**. This is the user's reading surface: LaTeX,
-mermaid and embedded SVG render here and cannot render in a terminal. Print its path at the
-start of the session.
+mermaid, callouts and embedded SVG render here and cannot render in a terminal. Print its
+path at the start of the session.
 
 Rarely reopened afterwards — that is what the reference note is for. So completeness beats
-polish here.
+polish here. Presentation still matters, because the user reads this note *while* thinking:
+the step structure has to be visible at a glance, not parsed out of a paragraph.
+
+### Callout vocabulary
+
+Each part of the step contract has one fixed callout type. Never improvise a mapping — the
+colours are how the user navigates the note.
+
+| Part | Callout |
+|---|---|
+| session goal | `> [!tldr] Goal` |
+| whole probe transcript | `> [!example]- Probe — <n> questions` (collapsed) |
+| verifier outcome | `> [!info] Verification` |
+| tension | `> [!failure] Tension` |
+| motivated move | **prose, not boxed** |
+| the object | `> [!abstract] Definition` |
+| anchor | `> [!important] Anchor` |
+| reframe | `> [!note] Reframe` |
+| quiz question | `> [!question] Quiz` |
+| grade | `> [!success] Quiz — correct` / `> [!failure] Quiz — missed` |
+| subagent failure | `> [!warning] visual pending — <concept>` |
+| user's own compression | `> [!quote] Your compression` |
+| your compression | `> [!summary] Reconciled` |
+
+**Box discipline.** At most ~3 callouts per node, prose in between. A note where every block
+is boxed reads as a wall of boxes and nothing stands out — which defeats the point of boxing
+the tension, the anchor and the quiz. The motivated move is deliberately unboxed: it is the
+argument, and it should read as continuous reasoning.
+
+**Mermaid stays outside callouts** — it does not reliably render inside one. Math does, in
+both `$…$` and `$$…$$`.
 
 ````markdown
 ---
@@ -97,17 +127,19 @@ goal: express Maxwell's equations in two equations using forms
 status: in-progress
 ---
 
-# Understanding differential forms — 2026-08-18
+# Understanding differential forms
 
-**Goal.** <the user's own words, from Phase 0>
+> [!tldr] Goal
+> <the user's own words, verbatim from Phase 0>
 
 ## Probe
 
-**Self-report.** <verbatim>
-
-**Q1.** A force field acts on a particle moving along a curve $C$. What does the line
-integral compute? → *net work done by the field* — correct
-**Q2.** …
+> [!example]- Probe — 12 questions, edge located
+> **Self-report.** <verbatim>
+>
+> **q1** A force field acts on a particle moving along a curve $C$. What does the line
+> integral compute? → *net work done by the field* — correct
+> **q2** …
 
 **Edge located.** Vector calculus solid, differential-forms language absent, special
 relativity shaky.
@@ -120,31 +152,52 @@ graph LR
   ...
 ```
 
-Verification: formal domain, internal-consistency pass — no contradictions.
+> [!info] Verification
+> Formal domain — internal-consistency pass, no contradictions.
 
 ## Teaching
 
 ### Node 1 — covectors
 
-**Tension.** …
-**Move.** …
-**Definition.** …
-**Anchor.** …
-**Reframe.** $dx$ was never an infinitesimal.
+> [!failure] Tension
+> We have something that eats one vector and returns a number. But a surface has two
+> directions, and nothing we hold can take two vectors at once.
+
+So try the cheapest possible extension: a machine that eats two vectors and is linear in
+each. <the motivated move, in prose — this is the argument, so it stays unboxed>
+
+> [!abstract] Definition
+> A covector on $V$ is a linear map $\alpha: V \to \mathbb{R}$.
 
 ![[01-covector-eats-vector.svg]]
 
-**Quiz.** $\alpha = 3\,dx - 2\,dy$, $v = (2,5)$, $\alpha(v)$? → $-4$ — correct
+> [!important] Anchor
+> A $k$-form is the kind of thing a $k$-dimensional surface can eat.
+
+> [!note] Reframe
+> $dx$ was never an infinitesimal. It is the covector that reads off the $x$-component of
+> whatever vector you feed it — every line integral you already know still stands.
+
+> [!question] Quiz
+> $\alpha = 3\,dx - 2\,dy$ and $v = (2,5)$. What is $\alpha(v)$, and why did you not need a
+> metric to compute it?
+
+> [!success] Quiz — correct
+> **Answer.** $-4$ — "the form already carries the coefficients"
+> **Reasoning.** sound; did not reach for a dot product.
+
+### Node 2 — …
 
 > [!warning] visual pending — 2-form as oriented area
 > illustrator returned an error; retry at next checkpoint
 
-### Node 2 — …
-
 ## Compression checkpoint 1
 
-**User's compression.** <verbatim — this is the measurement>
-**Reconciled.** generators: …; missing edge found at: …
+> [!quote] Your compression
+> <verbatim — this is the measurement>
+
+> [!summary] Reconciled
+> generators: …; missing edge found at: …
 
 ## Next frontier
 resume at: wedge product — construction from antisymmetrisation

@@ -23,7 +23,7 @@ Distinct from the existing skills in this setup:
 
 ## 1. Doctrine
 
-The system exists to serve six rules. They are the user's stated learning philosophy,
+The system exists to serve seven rules. They are the user's stated learning philosophy,
 not generic pedagogy, and they live in `DOCTRINE.md` so they can be tuned without
 touching machinery.
 
@@ -45,6 +45,9 @@ touching machinery.
    Past the edge, nothing attaches. Behind it, nothing is added.
 6. **Structure is durable.** Wired knowledge regenerates from its neighbours. Memorized
    facts simply vanish when forgotten.
+7. **Plain words before names.** Say what the thing does in everyday language, then attach
+   the term. A name handed over first is an empty label the learner must carry — the same
+   unseated state rule 1 exists to prevent.
 
 ## 2. Doctrine → mechanics
 
@@ -58,6 +61,7 @@ Every mechanism below traces to a rule. Nothing is in the system for its own sak
 | 2 | **Step contract.** Tension → motivated move → object → anchor. |
 | 4 | **Compression checkpoints.** Periodically collapse the walked strand into its generator set and write it to a reference note that is *shorter* than the log. |
 | 3 | **Understanding map** stores generators and edges, Brain-B shaped — never a topic checklist. |
+| 7 | **Rung readability caps.** Per-part word limits, one new term per rung, plain-words-then-name ordering, and fixed Obsidian callouts per step part so the structure of a rung is visible without reading it. |
 | 1, 6 | **Convention quarantine.** Facts that genuinely cannot be motivated (notation, names, historical accident) are tagged, never fake-derived, and routed to Anki. Everything else is expected to be regenerable and needs no drilling. |
 
 Three deliberate improvements over the reference implementation that inspired this design:
@@ -72,7 +76,7 @@ Three deliberate improvements over the reference implementation that inspired th
 ```
 ~/.claude/skills/understand/
   SKILL.md          orchestrator + phase machine
-  DOCTRINE.md       the six rules, user-editable
+  DOCTRINE.md       the seven rules, user-editable
   PROBE.md          binary-search protocol, question construction rules
   PLAN.md           DAG construction rules + mermaid emission format
   TEACH.md          step contract, quiz gating, compression checkpoints
@@ -338,7 +342,7 @@ A skill cannot be unit-tested; verification is one real session, checked against
 |---|---|
 | Relationship to `teach` | New skill; `teach` untouched, revisit later |
 | Cross-session memory | Persistent per-domain understanding map |
-| Teaching philosophy | The six doctrine rules above, in an editable `DOCTRINE.md` |
+| Teaching philosophy | The seven doctrine rules above, in an editable `DOCTRINE.md` |
 | Name | `understand`, model-invocation disabled |
 | Probe budget | 20 questions hard ceiling, ~10 targeted; strictly one question per message, inference-propagating, self-report-primed |
 | Verification | Domain-gated, non-blocking, citations for empirical domains |

@@ -17,7 +17,7 @@ State persists in your notes vault as a per-domain model of what you understand,
 session in a domain starts where the first one stopped.
 
 The design rationale — and why each mechanism exists — is in
-[`skills/understand/DESIGN.md`](skills/understand/DESIGN.md). The six rules everything serves
+[`skills/understand/DESIGN.md`](skills/understand/DESIGN.md). The seven rules everything serves
 are in [`DOCTRINE.md`](skills/understand/DOCTRINE.md).
 
 ## Requirements
@@ -27,8 +27,11 @@ are in [`DOCTRINE.md`](skills/understand/DOCTRINE.md).
   directly; a weaker model produces plausible teaching that quietly skips the motivation step.
   The skill checks and warns.
 - **A local markdown notes directory.** Obsidian is assumed but not required — the skill writes
-  plain markdown. Obsidian is what renders the LaTeX, mermaid and embedded SVG, and the session
-  log is meant to be read there rather than in the terminal.
+  plain markdown. Obsidian is what renders the LaTeX, mermaid, callouts and embedded SVG, and
+  the session log is meant to be read there rather than in the terminal. Each part of a teaching
+  step gets its own callout type (tension, definition, anchor, reframe, quiz), so the structure
+  of a step is visible in the note without reading it. Other markdown editors show the callouts
+  as plain blockquotes — readable, just not colour-coded.
 
 ## Install
 

@@ -78,6 +78,13 @@ graph LR
   classDef root fill:#2d4,stroke:#191
 ```
 
+Node labels use the plain-language phrase, not only the term: `covector — eats a vector,
+returns a number`. The graph is the first thing the user sees in the note, and a graph of bare
+technical names is a graph of empty labels (doctrine rule 7).
+
+Mermaid goes into the log **unboxed** — it does not render reliably inside a callout. The
+verifier outcome goes directly under it as `> [!info] Verification`.
+
 Then in chat, briefly:
 
 - the roots, named as things they already hold

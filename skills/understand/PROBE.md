@@ -84,6 +84,9 @@ edge, never a measurement of understanding.
   best distractor, because getting it wrong tells you *which* wrong model they hold, which is
   worth more than the fact that they were wrong.
 - **One concept per question.** A question testing two things gives a signal about neither.
+- **Plain wording.** Ask in everyday language, and never let an unexplained term appear in a
+  question — a learner who fails on the vocabulary reads as failing on the concept, and the
+  map records the wrong thing (doctrine rule 7). Keep each option to one line.
 
 ## Grading and feedback
 
@@ -93,6 +96,14 @@ edge, never a measurement of understanding.
   No signal is being extracted anyway, and it is free warm-up.
 - **Three "I don't know" answers in one strand** means the edge is well below where you
   assumed. Stop bisecting that strand, drop to its base, and plan to build up from there.
+
+## Writing the log
+
+Every question, the answer and the silent grade go into one collapsed callout in the live log
+— `> [!example]- Probe — <n> questions, edge located`. Collapsed, because it is a record, not
+reading material: the user should open the note and see the plan, not scroll past a
+transcript. Below it, unboxed, the two lines that *are* reading material: **edge located** and
+**roots**.
 
 ## Writing the map
 

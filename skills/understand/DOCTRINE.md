@@ -88,6 +88,18 @@ drilling is the genuinely arbitrary — notation, names, conventions, historical
 Those cannot be motivated and must not be fake-derived. Tag them, quarantine them, and send
 them to spaced repetition. Everything else earns its durability from structure.
 
+## 7. Plain words before names
+
+A name is not knowledge. Handed a term before its meaning, the learner has to carry an empty
+label around until something fills it — which is exactly the half-held, unseated state rule 1
+exists to prevent.
+
+So say what the thing *does*, in everyday language, and only then attach the word for it. When
+the field is entirely new, an analogy comes before the formal statement — not instead of it.
+
+This is also the difference between a rung that gets read and one that gets skimmed: dense
+prose full of unearned terms reads as narration, and narration does not seat.
+
 ## Standing consequence
 
 Difficulty is not the enemy, and it is not the goal either. Concentrate all difficulty into
