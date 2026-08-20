@@ -99,7 +99,9 @@ fail: say so plainly and re-teach the reason. When the user reports that the ans
 but the why has not clicked, that is a missing edge, and finding it is the highest-value work
 available in the session.
 
-- **Correct** → confirm in one line, advance.
+- **Correct** → confirm in one line, advance. Also flip this node's class from `pending` to
+  `learned` in the Plan graph's mermaid block (see PLAN.md step 4) — the graph is a live
+  status board, not a one-time snapshot, so this edit happens every time a gate passes.
 - **Wrong** → do **not** advance. The explanation route failed, not the learner. Re-teach by a
   *different* route: different motivation, different concrete case, add a visual, drop half a
   level. Record the failed route in the log so it is not repeated.

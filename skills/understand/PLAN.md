@@ -66,21 +66,64 @@ Mark a realistic session boundary. Do not shorten the plan to fit — shorten th
 
 ## Step 4 — Emit and present
 
-Write the mermaid graph into the live log, with edge labels intact:
+Write the mermaid graph into the live log as a **top-to-bottom live status board**, not a
+static diagram — this is the current house style, adopted after it was iterated live with
+the user; do not revert to the older left-right one-shot version below.
 
-```mermaid
-graph LR
-  R1["line integral = work along a path<br/>(you already hold this)"]:::root
-  R1 -->|"what object is it actually integrating?"| N1[covector]
-  N1 -->|"one per point, to act along a whole path"| N2[1-form]
-  N2 -->|"what can a 2D surface eat?"| N3[2-form]
-  N3 -->|"needs bilinear AND antisymmetric — how?"| N4[wedge product]
-  classDef root fill:#2d4,stroke:#191
+**Layout.** `graph TD`, not `graph LR`. Top-to-bottom avoids the horizontal scrolling a wide
+`LR` graph forces in Obsidian's note pane. Attach each root directly above the single node
+that consumes it (not all pooled at the top) — this keeps merges to 2–3 parents and avoids
+the overlapping-node rendering Obsidian produces when too many edges converge from the side.
+
+**Node labels** carry their own id in bold, plus the plain-language phrase — never the bare
+term alone (doctrine rule 7): `"<b>N1</b><br/>covector — eats a vector, returns a number"`.
+The id lets the user talk about "N3" in chat and have it mean something visually.
+
+(A top-left-corner-tag variant using an HTML `<table>` inside the label was tried live and
+rejected — it rendered inconsistently and looked worse than plain bold-then-linebreak. Do
+not reintroduce it.)
+
+**Three-state color, updated live.** Every node gets one of three classes:
+
+- `root` (green, `fill:#2d4,stroke:#191`) — locked before teaching started, from the probe.
+  **Never repainted** — this band is the permanent record of where the user began.
+- `pending` (grey, `fill:#888,stroke:#555,color:#fff`) — planned, not yet taught.
+- `learned` (gold, `fill:#fd4,stroke:#b90`) — taught and quiz-gate passed this session.
+
+At emission time every non-root node is `pending`. Flip a node to `learned` the moment its
+quiz gate passes (see TEACH.md step 7) by editing its `:::class` in place in the log — the
+graph is a living artifact, not a one-time snapshot.
+
+**Legend.** Directly above the mermaid block, render the three states as colored HTML
+badges (Obsidian renders inline HTML in markdown), not a plain-prose sentence — this reads
+at a glance the way the graph's colors do:
+
+```html
+<span style="display:inline-block;padding:2px 10px;margin-right:6px;border-radius:4px;background:#2d4;color:#111;font-weight:600;">green — root</span>where you started
+<span style="display:inline-block;padding:2px 10px;margin:6px 6px 0 0;border-radius:4px;background:#888;color:#fff;font-weight:600;">grey — pending</span>not yet taught
+<span style="display:inline-block;padding:2px 10px;margin:6px 6px 0 0;border-radius:4px;background:#fd4;color:#111;font-weight:600;">gold — learned</span>taught and quiz-passed
 ```
 
-Node labels use the plain-language phrase, not only the term: `covector — eats a vector,
-returns a number`. The graph is the first thing the user sees in the note, and a graph of bare
-technical names is a graph of empty labels (doctrine rule 7).
+Keep each badge's own text short — no trailing qualifiers like "this session" or "never
+repainted" bolted onto the badge's line; the fuller explanation belongs in this file, not in
+every session's log.
+
+Example skeleton (a small slice — a real plan has a root feeding each node that needs it):
+
+```mermaid
+graph TD
+  R1["<b>R1</b><br/>line integral = work along a path<br/><i>(you already hold this)</i>"]:::root
+  R1 -->|"what object is it actually integrating?"| N1
+
+  N1["<b>N1</b><br/>covector — eats a vector,<br/>returns a number"]:::pending
+  N1 -->|"one per point, to act along a whole path"| N2
+
+  N2["<b>N2</b><br/>1-form"]:::pending
+
+  classDef root fill:#2d4,stroke:#191
+  classDef pending fill:#888,stroke:#555,color:#fff
+  classDef learned fill:#fd4,stroke:#b90
+```
 
 Mermaid goes into the log **unboxed** — it does not render reliably inside a callout. The
 verifier outcome goes directly under it as `> [!info] Verification`.
