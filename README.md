@@ -98,6 +98,9 @@ the drafts are simply markdown files you can read or import yourself; nothing br
 
 Both are declared `model: opus`. Failures are surfaced visibly rather than swallowed.
 
+## Source
+Based on https://www.youtube.com/watch?v=kzcI5F4tGiU
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
